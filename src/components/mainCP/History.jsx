@@ -24,7 +24,7 @@ const HistoryCP = () => {
                   </p>
                 </div>
                 );
-            }).value();
+            }).value()
         }
       </div>
     </div>
