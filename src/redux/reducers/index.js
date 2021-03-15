@@ -1,3 +1,5 @@
+import {calculate} from "../../utils/calculator";
+
 export const initialState = {
   history: [],
   current: [],
@@ -6,10 +8,11 @@ export const initialState = {
 const reducer = function (state = initialState, {type, payload}) {
   switch (type) {
     case 'PREV':
+      state.history.splice(payload, 1);
       return {
         ...state,
         current: state.history[payload],
-        history: state.history.splice(payload, 1),
+        history: state.history,
       };
     case 'OP': {
       switch (payload) {
@@ -21,18 +24,25 @@ const reducer = function (state = initialState, {type, payload}) {
         case '=':
           return {
             ...state,
-            current: [],
-            history: state.history.concat([state.current]),
+            current: [calculate(state.current)],
+            history: state.current.length ? state.history.concat([state.current]) : state.history,
           }
         case '+/-':
           payload = '* -1';
         case 'x':
           payload = '*';
         default:
-          return {
-            ...state,
-            current: [...state.current, payload]
-          };
+        {
+          const last = state.current[state.current.length - 1] || '#';
+          if (last !== payload) {
+            return {
+              ...state,
+              current: [...state.current, payload]
+            };
+          } else {
+            return state
+          }
+        }
       }
     }
     default:

@@ -1,27 +1,28 @@
 import {useDispatch, useSelector} from "react-redux";
 import {calculate} from "../../utils/calculator";
-import lodash from 'lodash';
+import _ from 'lodash';
 import {changeHistory} from "../../redux/actions";
 
 const HistoryCP = () => {
 
   const dispatch = useDispatch();
-  const histories = useSelector(state => state.history);
+  let histories = useSelector(state => state.history);
+  histories = _.takeRight(histories, 3);
 
   return (
     <div className="container mx-auto max-w-max mt-5">
       <div className="flex justify-center flex-col">
         <p className="text-blue-100 font-bold text-center my-2">Recent Calculations</p>
         {
-          lodash.take(histories)
-            .map((x, i) => {
+            _.reverse(histories).map((x, i) => {
               const classNameSuffix = i === 0 ? '100 my-1' : (i === 1 ? '50 my-0.5' : '25');
               return (
-                <div className="cursor-pointer ">
+                <div className="cursor-pointer" key={x.join('-')}>
                   <p
                     onClick={() => dispatch(changeHistory(histories.indexOf(x)))}
-                    className={`text-blue-100 text-center text-opacity-${classNameSuffix}`}
-                    key={i}>{`${x.join('')} = ${calculate(x)}`}</p>
+                    className={`text-blue-100 text-center text-opacity-${classNameSuffix}`}>
+                    {`${x.join('')} = ${calculate(x)}`}
+                  </p>
                 </div>
                 );
             })

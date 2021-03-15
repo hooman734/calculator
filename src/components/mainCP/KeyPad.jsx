@@ -24,6 +24,7 @@ const KeyPadCP = () => {
       '13': '=',
       '42': '*',
       '43': '+',
+      '45': '-',
       '96': '0',
       '97': '1',
       '98': '2',
@@ -39,7 +40,9 @@ const KeyPadCP = () => {
       '109': '-',
       '110': '.',
       '190': '.',
-      '111': '/'
+      '111': '/',
+      '191': '/',
+      '47': '/'
     };
 
     if (evt.keyCode in possibleKeys) {
@@ -80,7 +83,7 @@ const KeyPadCP = () => {
         <div className="m-0"><Key onEnter={onEnter} icon={"+"}/></div>
       </div>
       <div className="flex justify-center">
-        <div className="m-0 flex-grow"><Key icon={"0"}/></div>
+        <div className="m-0 flex-grow"><Key onEnter={onEnter} icon={"0"}/></div>
         <div className="m-0"><Key onEnter={onEnter} icon={"."}/></div>
         <div className="m-0"><Key onEnter={onEnter} icon={"="}/></div>
       </div>
