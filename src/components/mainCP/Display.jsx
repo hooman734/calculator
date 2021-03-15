@@ -10,7 +10,7 @@ const DisplayCP = () => {
     <div className="container mt-5 mb-3 mx-auto max-w-max">
       <div className="flex justify-center flex-col">
 
-        <p className="text-4xl text-right text-blue-100 tabular-nums slashed-zero cursor-pointer">{calculate(operations)}</p>
+        <p className="text-4xl text-right text-blue-100 tabular-nums slashed-zero">{calculate(operations)}</p>
 
         <p className="text-4xl text-right text-blue-100 tabular-nums slashed-zero">
           <sub>

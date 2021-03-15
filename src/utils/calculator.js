@@ -4,7 +4,7 @@ export const calculate = (operations) => {
   }
 
   try {
-    return eval(operations.join(''));
+    return Math.round(1000 * parseFloat(eval(operations.join('')))) / 1000;
   } catch (err) {
     console.log(err.message);
     return 0;

@@ -16,16 +16,19 @@ const HistoryCP = () => {
           lodash.take(histories)
             .map((x, i) => {
               const classNameSuffix = i === 0 ? '100 my-1' : (i === 1 ? '50 my-0.5' : '25');
-              return (<p
-                onClick={() => dispatch(changeHistory(histories.indexOf(x)))}
-                className={`text-blue-100 text-center text-opacity-${classNameSuffix}`}
-                key={i}>{`${x.join('')} = ${calculate(x)}`}</p>);
+              return (
+                <div className="cursor-pointer ">
+                  <p
+                    onClick={() => dispatch(changeHistory(histories.indexOf(x)))}
+                    className={`text-blue-100 text-center text-opacity-${classNameSuffix}`}
+                    key={i}>{`${x.join('')} = ${calculate(x)}`}</p>
+                </div>
+                );
             })
         }
       </div>
     </div>
   );
-
 }
 
 export default HistoryCP;
