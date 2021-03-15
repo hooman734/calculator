@@ -1,18 +1,30 @@
+import {useDispatch, useSelector} from "react-redux";
+import {calculate} from "../../utils/calculator";
+import lodash from 'lodash';
+import {changeHistory} from "../../redux/actions";
 
-const HistoryCP = props => {
-    const { previousActions } = props;
-    const { prev1, prev2, prev3 } = previousActions;
+const HistoryCP = () => {
 
-    return (
-        <div className="container mx-auto max-w-max mt-5">
-            <div className="flex justify-center flex-col">
-                <p className="text-blue-100 font-bold text-center my-2">Recent Calculations</p>
-                <p className="text-blue-100 text-center my-1">{ prev1 }</p>
-                <p className="text-blue-100 text-center text-opacity-50  my-0.5">{ prev2 }</p>
-                <p className="text-blue-100 text-center text-opacity-25">{ prev3 }</p>
-            </div>
-        </div>
-    );
+  const dispatch = useDispatch();
+  const histories = useSelector(state => state.history);
+
+  return (
+    <div className="container mx-auto max-w-max mt-5">
+      <div className="flex justify-center flex-col">
+        <p className="text-blue-100 font-bold text-center my-2">Recent Calculations</p>
+        {
+          lodash.take(histories)
+            .map((x, i) => {
+              const classNameSuffix = i === 0 ? '100 my-1' : (i === 1 ? '50 my-0.5' : '25');
+              return (<p
+                onClick={() => dispatch(changeHistory(histories.indexOf(x)))}
+                className={`text-blue-100 text-center text-opacity-${classNameSuffix}`}
+                key={i}>{`${x.join('')} = ${calculate(x)}`}</p>);
+            })
+        }
+      </div>
+    </div>
+  );
 
 }
 
