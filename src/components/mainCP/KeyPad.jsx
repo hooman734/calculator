@@ -1,7 +1,7 @@
 import Key from './Key';
 import {useDispatch} from "react-redux";
 import {operator} from "../../redux/actions";
-import {useEffect} from "react";
+import {useEffect, useCallback } from "react";
 
 const KeyPadCP = () => {
   const dispatch = useDispatch();
