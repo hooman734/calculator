@@ -16,7 +16,7 @@ const HistoryCP = () => {
             _.chain(histories).takeRight(3).reverse().map((x, i) => {
               const classNameSuffix = i === 0 ? '100 my-1' : (i === 1 ? '50 my-0.5' : '25');
               return (
-                <div className="cursor-pointer" key={x.join('-') + histories.length}>
+                <div className="cursor-pointer" key={i + x.join('-') + histories.length}>
                   <p
                     onClick={() => dispatch(changeHistory(histories.indexOf(x)))}
                     className={`text-blue-100 text-center text-opacity-${classNameSuffix}`}>
