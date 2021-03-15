@@ -41,7 +41,7 @@ const reducer = function (state = initialState, {type, payload}) {
       }
 
       const last = _.last(state.current) || '#';
-      if (last !== payload) {
+      if (!isNaN(last) || (isNaN(last) && last !== payload)) {
         return {
           ...state,
           current: [...state.current, payload]
