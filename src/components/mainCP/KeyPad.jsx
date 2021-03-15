@@ -5,7 +5,7 @@ import {useEffect, useCallback } from "react";
 
 const KeyPadCP = () => {
   const dispatch = useDispatch();
-  const onEnter = icon => dispatch(operator(icon));
+  const onEnter = useCallback(icon => dispatch(operator(icon)), []);
 
   const documentEventListener = useCallback((evt) => {
     const possibleKeys = {
