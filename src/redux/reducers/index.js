@@ -1,4 +1,5 @@
 import {calculate} from "../../utils/calculator";
+import _ from 'lodash';
 
 export const initialState = {
   history: [],
@@ -33,7 +34,7 @@ const reducer = function (state = initialState, {type, payload}) {
           payload = '*';
         default:
         {
-          const last = state.current[state.current.length - 1] || '#';
+          const last = _.last(state.current) || '#';
           if (last !== payload) {
             return {
               ...state,
