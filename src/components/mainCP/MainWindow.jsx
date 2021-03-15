@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import KeyPad from "./KeyPad";
 import Display from "./Display";
 import History from "./History";
 
 class MainWindow extends React.Component {
+    clickHandler = event => {
+
+    }
     render () {
         return (
             <div className="container m-auto max-w-max my-5 py-5 px-5 mx-5">
@@ -23,4 +27,8 @@ class MainWindow extends React.Component {
     }
 }
 
-export default MainWindow;
+const mapStateToProps = state => ({
+    current: state.current
+});
+
+export default connect(mapStateToProps)(MainWindow);
