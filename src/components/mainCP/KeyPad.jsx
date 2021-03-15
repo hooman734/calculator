@@ -48,7 +48,7 @@ const KeyPadCP = () => {
     if (evt.keyCode in possibleKeys) {
       onEnter(possibleKeys[evt.keyCode]);
     }
-  }, []);
+  }, [onEnter]);
 
   useEffect(() => {
     document.addEventListener('keypress', documentEventListener);
