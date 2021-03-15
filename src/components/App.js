@@ -7,11 +7,11 @@ function App() {
     const divStyle = ({backgroundColor: 'rgb(29, 41, 58'});
     return (
       <div className="container m-auto max-w-full" style={divStyle}>
-          <div className="flex xs:justify-center justify-evenly flex-row  xs:flex-col">
-              <div className="self-stretch">
+          <div className="flex justify-center sm:justify-evenly align-middle flex-col-reverse sm:flex-row">
+              <div className="self-center sm:self-stretch">
                   <SideWindow/>
               </div>
-              <div className="self-stretch">
+              <div className="self-center sm:self-stretch">
                   <MainWindow/>
               </div>
           </div>
