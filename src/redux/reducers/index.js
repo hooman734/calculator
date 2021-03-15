@@ -30,20 +30,24 @@ const reducer = function (state = initialState, {type, payload}) {
           }
         case '+/-':
           payload = '* -1';
+          const last = state.current.pop();
+          payload = -1 * parseFloat(last);
+          break;
         case 'x':
           payload = '*';
+          break;
         default:
-        {
-          const last = _.last(state.current) || '#';
-          if (last !== payload) {
-            return {
-              ...state,
-              current: [...state.current, payload]
-            };
-          } else {
-            return state
-          }
-        }
+          break;
+      }
+
+      const last = _.last(state.current) || '#';
+      if (last !== payload) {
+        return {
+          ...state,
+          current: [...state.current, payload]
+        };
+      } else {
+        return state
       }
     }
     default:
