@@ -6,15 +6,14 @@ import {changeHistory} from "../../redux/actions";
 const HistoryCP = () => {
 
   const dispatch = useDispatch();
-  let histories = useSelector(state => state.history);
-  histories = _.takeRight(histories, 3);
+  const histories = useSelector(state => state.history);
 
   return (
     <div className="container mx-auto max-w-max mt-5">
       <div className="flex justify-center flex-col">
         <p className="text-blue-100 font-bold text-center my-2">Recent Calculations</p>
         {
-            _.reverse(histories).map((x, i) => {
+            _.chain(histories).takeRight(histories, 3).reverse(histories).map((x, i) => {
               const classNameSuffix = i === 0 ? '100 my-1' : (i === 1 ? '50 my-0.5' : '25');
               return (
                 <div className="cursor-pointer" key={x.join('-')}>
@@ -25,7 +24,7 @@ const HistoryCP = () => {
                   </p>
                 </div>
                 );
-            })
+            }).value();
         }
       </div>
     </div>
