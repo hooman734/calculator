@@ -9,10 +9,10 @@ export const initialState = {
 const reducer = function (state = initialState, {type, payload}) {
   switch (type) {
     case 'PREV':
-      state.history.splice(payload, 1);
+      const last = state.history.splice(payload, 1);
       return {
         ...state,
-        current: state.history[payload] || [],
+        current: last,
         history: state.history,
       };
     case 'OP': {
