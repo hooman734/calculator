@@ -4,6 +4,7 @@ export const calculate = (operations) => {
   }
 
   try {
+    // eslint-disable-next-line no-eval
     return Math.round(1000 * parseFloat(eval(operations.join('')))) / 1000;
   } catch (err) {
     console.log(err.message);
