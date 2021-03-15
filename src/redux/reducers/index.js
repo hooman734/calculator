@@ -12,7 +12,7 @@ const reducer = function (state = initialState, {type, payload}) {
       state.history.splice(payload, 1);
       return {
         ...state,
-        current: state.history[payload],
+        current: state.history[payload] || [],
         history: state.history,
       };
     case 'OP': {
