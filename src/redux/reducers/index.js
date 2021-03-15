@@ -9,7 +9,7 @@ export const initialState = {
 const reducer = function (state = initialState, {type, payload}) {
   switch (type) {
     case 'PREV':
-      const last = state.history.splice(payload, 1)[0];
+      const last = state.history.splice(payload, 1)[0] || [];
       return {
         ...state,
         current: last,
