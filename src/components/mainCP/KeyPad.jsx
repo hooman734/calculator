@@ -7,7 +7,7 @@ const KeyPadCP = () => {
   const dispatch = useDispatch();
   const onEnter = icon => dispatch(operator(icon));
 
-  const documentEventListener = (evt) => {
+  const documentEventListener = useCallback((evt) => {
     const possibleKeys = {
       '49': '1',
       '50': '2',
@@ -48,7 +48,7 @@ const KeyPadCP = () => {
     if (evt.keyCode in possibleKeys) {
       onEnter(possibleKeys[evt.keyCode]);
     }
-  }
+  });
 
   useEffect(() => {
     document.addEventListener('keypress', documentEventListener);
