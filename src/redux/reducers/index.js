@@ -26,6 +26,8 @@ const reducer = function (state = initialState, {type, payload}) {
           }
         case '+/-':
           payload = '* -1';
+        case 'x':
+          payload = '*';
         default:
           return {
             ...state,

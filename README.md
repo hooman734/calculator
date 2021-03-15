@@ -1,5 +1,5 @@
 ### About
-#### A calculator with using creat-react-app, redux, tailwincss, font-awesome.
+#### A calculator with using creat-react-app, redux, tailwincss, and font-awesome.
 
 
 ### Deployed in Vercel.
