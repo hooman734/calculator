@@ -7,3 +7,7 @@
 
 
 ![screenshot](screencapture-calculator-psi-ten-vercel-app-2021-03-15-19_45_04.png "Screenshot")
+
+Improvements (TODOs):
+- Should disallow 1+*3
+- Should allow 03 + 4
